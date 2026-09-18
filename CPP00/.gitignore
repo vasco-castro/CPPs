@@ -40,6 +40,4 @@
 # debug information files
 *.dwo
 
-# IDEs garbage
-.idea
-.vscode
+megaphone

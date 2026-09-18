@@ -1,26 +1,35 @@
 
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+# ------------------- Variables -------------------
 
-NAME = megaphone
-SRCS = megaphone.cpp
-OBJS = $(SRCS:.cpp=.o)
+NAME		= megaphone
+
+CXX			?= c++
+CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
+
+SRCS		:= $(NAME).cpp
+
+# ------------------ Compilation ------------------
+
+$(NAME): $(SRCS)
+	$(info Compiling exercise.)
+	@$(CXX) $(CXXFLAGS) $(SRCS) -o $(NAME)
+
+# --------------------- Rules ---------------------
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@echo "Compiling exercise."
-	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-
 clean:
-	rm -f $(OBJS)
+	$(info Cleaning objects.)
+	@rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(info Cleaning exercise.)
+	@rm -f $(NAME)
 
 re: fclean all
 
+.DEFAULT_GOAL := all
 .PHONY: all clean fclean re test
 
-test:
+test: $(NAME)
 	@./$(NAME) test " " 123wow!
