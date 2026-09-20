@@ -1,5 +1,8 @@
 
-#include <string>
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+
+# include <string>
 
 class Contact {
 
@@ -7,17 +10,13 @@ class Contact {
         std::string first_name;
         std::string last_name;
         std::string nickname;
-        int         phone_number;
+        std::string phone_number;
         std::string darkest_secret;
 
     public:
         Contact();
-        Contact(
-            std::string first_name,
-            std::string last_name,
-            std::string nickname,
-            int phone_number, 
-            std::string darkest_secret
-        );
+        Contact(std::string first_name, std::string last_name, std::string nickname, std::string phone_number, std::string darkest_secret);
 
 };
+
+#endif // CONTACT_HPP

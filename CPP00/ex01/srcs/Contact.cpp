@@ -1,17 +1,8 @@
 
 #include "Contact.hpp"
 
-Contact::Contact(
-    std::string first_nameP,
-    std::string last_nameP,
-    std::string nicknameP,
-    int phone_numberP, 
-    std::string darkest_secretP
-): 
-    first_name(first_nameP),
-    last_name(last_nameP),
-    nickname(nicknameP),
-    phone_number(phone_numberP),
-    darkest_secret(darkest_secretP)
-{}
+Contact::Contact() {}
+
+Contact::Contact( std::string first_name, std::string last_name, std::string nickname, std::string phone_number, std::string darkest_secret): 
+    first_name(first_name), last_name(last_name), nickname(nickname), phone_number(phone_number), darkest_secret(darkest_secret) {}
 
