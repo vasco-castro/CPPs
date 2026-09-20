@@ -1,7 +1,7 @@
 
 # ------------------- Variables -------------------
 
-NAME		:= Zombie
+NAME		:= zombie
 
 # Directories
 SRCS_DIR	:= srcs/

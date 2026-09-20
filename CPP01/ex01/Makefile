@@ -1,7 +1,7 @@
 
 # ------------------- Variables -------------------
 
-NAME		:= ZombieHorde
+NAME		:= zombieHorde
 
 # Directories
 SRCS_DIR	:= srcs/

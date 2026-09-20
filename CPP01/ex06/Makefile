@@ -1,7 +1,7 @@
 
 # ------------------- Variables -------------------
 
-NAME		:= unnecessaryViolence
+NAME		:= harlFilter
 
 # Directories
 SRCS_DIR	:= srcs/
@@ -11,7 +11,7 @@ INCS_DIR	:= includes/
 CXX			:= c++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98 -I$(INCS_DIR)
 
-FILES		:= main Weapon HumanA HumanB
+FILES		:= main Harl
 SRCS		:= $(addprefix $(SRCS_DIR), $(addsuffix .cpp, $(FILES)))
 OBJS		:= $(SRCS:$(SRCS_DIR)%.cpp=$(OBJS_DIR)%.o)
 DEPS		:= $(OBJS:$(OBJS_DIR)%.o=$(OBJS_DIR)%.d)

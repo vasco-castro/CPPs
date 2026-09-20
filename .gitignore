@@ -40,6 +40,17 @@
 # debug information files
 *.dwo
 
+# Project executables
+megaphone
+phoneBook
+zombie
+zombieHorde
+stringReferences
+unnecessaryViolence
+sed
+harl
+harlFilter
+
 # IDEs garbage
 .idea
 .vscode
