@@ -43,7 +43,7 @@ fclean: clean
 re: fclean all
 
 run: re
-	@valgrind --leak-check=full ./$(NAME)
+	@valgrind --leak-check=full ./$(NAME) "DEBUG"
 
 .DEFAULT_GOAL := all
 .PHONY: all clean fclean re run

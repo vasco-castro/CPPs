@@ -2,19 +2,19 @@
 #include "Harl.hpp"
 
 void Harl::debug(void) const {
-	std::cout << DEBUG << std::endl;
+	std::cout << MSG_DEBUG << std::endl;
 }
 
 void Harl::info(void) const {
-	std::cout << INFO << std::endl;
+	std::cout << MSG_INFO << std::endl;
 }
 
 void Harl::warning(void) const {
-	std::cout << WARNING << std::endl;
+	std::cout << MSG_WARNING << std::endl;
 }
 
 void Harl::error(void) const {
-	std::cerr << ERROR << std::endl;
+	std::cerr << MSG_ERROR << std::endl;
 }
 
 int Harl::getLevel(std::string level) const {
@@ -36,6 +36,6 @@ void Harl::complain(std::string level) const {
 		case LVL_ERROR:
 			return this->error();
 		default:
-			std::cout << DEFAULT << std::endl;
+			std::cout << MSG_DEFAULT << std::endl;
 	}
 }
