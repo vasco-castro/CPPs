@@ -7,10 +7,10 @@ int main(void) {
 	dude.announce();
 
 	randomChump("Ze");
-	
+
 	Zombie *carlos = newZombie("Carlos");
 	carlos->announce();
 	delete carlos;
-	
+
 	return 0;
 }

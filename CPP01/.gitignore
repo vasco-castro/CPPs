@@ -40,3 +40,8 @@
 # debug information files
 *.dwo
 Zombie
+ZombieHorde
+stringReferences
+UnnecessaryViolence
+Harl
+HarlFilter

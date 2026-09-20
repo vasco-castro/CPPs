@@ -1,7 +1,7 @@
 
 # ------------------- Variables -------------------
 
-NAME		= Zombie
+NAME		:= Zombie
 
 # Directories
 SRCS_DIR	:= srcs/
@@ -11,15 +11,18 @@ INCS_DIR	:= includes/
 CXX			:= c++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98 -I$(INCS_DIR)
 
-SRCS		:= $(addprefix $(SRCS_DIR), $(addsuffix .cpp, $(NAME) main newZombie randomChump))
+FILES		:= Zombie main newZombie randomChump
+SRCS		:= $(addprefix $(SRCS_DIR), $(addsuffix .cpp, $(FILES)))
 OBJS		:= $(SRCS:$(SRCS_DIR)%.cpp=$(OBJS_DIR)%.o)
-INCS		:= $(INCS_DIR)$(NAME).hpp
+DEPS		:= $(OBJS:$(OBJS_DIR)%.o=$(OBJS_DIR)%.d)
 
 # ------------------ Compilation ------------------
 
-$(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp $(INCS)
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
 	@mkdir -p $(dir $@)
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -c $< -o $@ -MMD -MP
+
+-include $(DEPS)
 
 $(NAME): $(OBJS)
 	$(info Compiling exercise.)

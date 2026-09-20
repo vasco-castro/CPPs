@@ -1,5 +1,6 @@
 
 #include "Zombie.hpp"
+#include <iostream>
 
 int main(void) {
 
@@ -8,11 +9,11 @@ int main(void) {
 	if (horde == NULL)
 		return 1;
 
-    for(int i = 0; i < hordeSize; i++){
-        std::cout << i << " : ";
+	for(int i = 0; i < hordeSize; i++){
+		std::cout << i << " : ";
 		horde[i].announce();
 	}
 
-	delete []horde;
+	delete[] horde;
 	return 0;
 }

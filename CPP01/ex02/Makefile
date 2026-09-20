@@ -1,17 +1,16 @@
 
 # ------------------- Variables -------------------
 
-NAME		:= ZombieHorde
+NAME		:= stringReferences
 
 # Directories
 SRCS_DIR	:= srcs/
 OBJS_DIR	:= objs/
-INCS_DIR	:= includes/
 
 CXX			:= c++
-CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98 -I$(INCS_DIR)
+CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
 
-FILES		:= Zombie main zombieHorde
+FILES		:= main
 SRCS		:= $(addprefix $(SRCS_DIR), $(addsuffix .cpp, $(FILES)))
 OBJS		:= $(SRCS:$(SRCS_DIR)%.cpp=$(OBJS_DIR)%.o)
 DEPS		:= $(OBJS:$(OBJS_DIR)%.o=$(OBJS_DIR)%.d)
