@@ -15,6 +15,8 @@ class PhoneBook {
 		PhoneBook();
 		void add();
 		void search();
+
+		void print_table() const;
 };
 
 #endif // PHONEBOOK_HPP
