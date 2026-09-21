@@ -9,14 +9,14 @@
 class PhoneBook {
 
 	Contact contacts[MAX_CONTACTS];
-	int	last_id;
-		
+	int	lastId;
+
 	public:
 		PhoneBook();
 		void add();
 		void search();
 
-		void print_table() const;
+		void printTable() const;
 };
 
 #endif // PHONEBOOK_HPP

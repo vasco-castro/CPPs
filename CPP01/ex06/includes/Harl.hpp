@@ -12,11 +12,11 @@
 # define MSG_DEFAULT "[ Probably complaining about insignificant problems ]"
 
 enum e_level {
-      LVL_DEBUG = 0,
-      LVL_INFO,
-      LVL_WARNING,
-      LVL_ERROR,
-      LVL_NONE
+	LVL_DEBUG = 0,
+	LVL_INFO,
+	LVL_WARNING,
+	LVL_ERROR,
+	LVL_NONE
 };
 
 class Harl {

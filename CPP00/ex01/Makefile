@@ -34,7 +34,7 @@ all: $(NAME)
 
 clean:
 	$(info Cleaning objects.)
-	@rm -f $(OBJS)
+	@rm -rf $(OBJS_DIR)
 
 fclean: clean
 	$(info Cleaning exercise.)

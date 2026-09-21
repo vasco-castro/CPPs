@@ -1,28 +1,31 @@
 
 #include <iostream>
 #include <string>
-#include <cstring>
+#include <stdexcept>
 #include "PhoneBook.hpp"
-#include "Contact.hpp"
 
 int main(void)
 {
-    PhoneBook pb;
-    std::string input;
+	PhoneBook pb;
+	std::string input;
 
-    while(true) {
-        std::cout << "Command > ";
-        if (!std::getline(std::cin, input))
-            return 1;
-        else if (input == "ADD")
-            pb.add();
-        else if (input == "SEARCH")
-            pb.search();
-        else if (input == "EXIT")
-            break;
-        else
-            std::cout << "Command is not recognized!" << std::endl;      
-    }
+	try {
+		while(true) {
+			std::cout << "Command > ";
+			if (!std::getline(std::cin, input))
+				throw std::runtime_error("Interrupted!");
+			else if (input == "ADD")
+				pb.add();
+			else if (input == "SEARCH")
+				pb.search();
+			else if (input == "EXIT")
+				break;
+			else
+				std::cout << "Command is not recognized!" << std::endl;
+		}
+	} catch (const std::exception &e) {
+		std::cout << std::endl << e.what() << std::endl;
+	}
 
-    return 0;
+	return 0;
 }

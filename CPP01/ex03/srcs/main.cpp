@@ -30,12 +30,12 @@ int main()
 	std::cout << "Scope is closed and destructors are called." << std::endl << std::endl;
 
 	{
-        HumanB dave("Dave");
-        dave.attack(); // No weapon set, should handle gracefully
-        Weapon spear = Weapon("long spear");
-        dave.setWeapon(spear);
-        dave.attack();
-    }
+		HumanB dave("Dave");
+		dave.attack(); // No weapon set, should handle gracefully
+		Weapon spear = Weapon("long spear");
+		dave.setWeapon(spear);
+		dave.attack();
+	}
 	
 	std::cout << "Scope is closed and destructors are called." << std::endl;
 

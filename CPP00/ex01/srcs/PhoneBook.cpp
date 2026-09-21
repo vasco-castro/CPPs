@@ -1,87 +1,95 @@
 
 #include <iostream>
 #include <string>
-#include <cstring>
 #include <cstdlib>
 #include <iomanip>
+#include <cctype>
+#include <stdexcept>
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(): last_id(0) {}
+PhoneBook::PhoneBook(): lastId(0) {}
 
-static const std::string prompt_field(std::string fieldName) {
-	std::string field("");
-	while(field.empty()) {
-        std::cout << "Insert " << fieldName << " > ";
+static bool strIsEmpty(std::string str) {
+	std::string::const_iterator it;
 
-        if (!std::getline(std::cin, field))
-            throw std::runtime_error("Interrupted!");
-		if (!field.empty())
-			break;
-    }
-    return field;
+	for (it = str.begin(); it != str.end(); it++)
+		if (!std::isspace(static_cast<unsigned char>(*it))) return false;
+	return true;
 }
 
-static std::string trim_column(std::string column) {
+static std::string promptField(std::string fieldName) {
+	std::string field("");
+	while (strIsEmpty(field)) {
+		std::cout << "Insert " << fieldName << " > ";
+
+		if (!std::getline(std::cin, field))
+			throw std::runtime_error("Interrupted!");
+	}
+	return field;
+}
+
+void PhoneBook::add() {
+	// Prompt the User for the Contact fields
+	std::string firstName = promptField("First Name");
+	std::string lastName = promptField("Last Name");
+	std::string nickname = promptField("Nickname");
+	std::string phoneNumber = promptField("Phone Number");
+	std::string darkestSecret = promptField("Darkest Secret");
+
+	contacts[lastId] = Contact(firstName, lastName, nickname, phoneNumber, darkestSecret);
+	lastId++;
+	if (lastId == MAX_CONTACTS)
+		lastId = 0;
+}
+
+static std::string trimColumn(std::string column) {
 	if (column.length() > 10)
 		return column.substr(0, 9) + '.';
 	return column;
 }
 
-void PhoneBook::print_table() const {
+void PhoneBook::printTable() const {
 	int i = 0;
 	if (contacts[0].getEmpty()) {
 		std::cout << "Contact List is Empty!" << std::endl;
 		return;
 	}
 
+	// Print header
 	std::cout << "|" << std::setw(10) << "Index" << "|"
 		<< std::setw(10) << "First Name" << "|"
 		<< std::setw(10) << "Last Name" << "|"
 		<< std::setw(10) << "Nickname" << "|" << std::endl;
 
-	while (!contacts[i].getEmpty())
+	while (i < MAX_CONTACTS && !contacts[i].getEmpty())
 	{
-		// TODO: FINISH
+		// Print actual Contact content
 		std::cout << "|" << std::setw(10) << i << "|"
-			<< std::setw(10) << trim_column(contacts[i].getFirstName()) << "|"
-			<< std::setw(10) << trim_column(contacts[i].getLastName()) << "|"
-			<< std::setw(10) << trim_column(contacts[i].getNickname()) << "|" << std::endl;
+			<< std::setw(10) << trimColumn(contacts[i].getFirstName()) << "|"
+			<< std::setw(10) << trimColumn(contacts[i].getLastName()) << "|"
+			<< std::setw(10) << trimColumn(contacts[i].getNickname()) << "|" << std::endl;
 		i++;
 	}
 }
 
-void PhoneBook::add() {
-
-	std::string first_name = prompt_field("first_name");
-	std::string last_name = prompt_field("last_name");
-	std::string nickname = prompt_field("nickname");
-	std::string phone_number = prompt_field("phone_number");
-	std::string darkest_secret = prompt_field("darkest_secret");
-
-	contacts[last_id] = Contact(first_name, last_name, nickname, phone_number, darkest_secret);
-	last_id++;
-	if (last_id == MAX_CONTACTS)
-		last_id = 0;
-}
-
-static bool number_has_chars(std::string str) {
+static bool numberHasChars(std::string str) {
 	std::string::const_iterator it;
 
 	for (it = str.begin(); it != str.end(); it++)
-		if (!std::isdigit(*it)) return true;
+		if (!std::isdigit(static_cast<unsigned char>(*it))) return true;
 	return false;
 }
 
 void PhoneBook::search() {
-	print_table();
+	printTable();
 
 	std::string index;
 	std::cout << "Insert Contact Index > ";
 
 	if (!std::getline(std::cin, index))
-            throw std::runtime_error("Interrupted!");
+			throw std::runtime_error("Interrupted!");
 
-	if (number_has_chars(index)){
+	if (numberHasChars(index) || index.empty() || index.length() > 2){
 		std::cout << "None valid index!" << std::endl;
 		return;
 	}
@@ -92,5 +100,5 @@ void PhoneBook::search() {
 		return;
 	}
 
-	contacts[id].print_contact_fields();
+	contacts[id].printContactFields();
 }
