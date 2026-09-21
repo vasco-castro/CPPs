@@ -20,8 +20,8 @@ int main(void)
             pb.search();
         else if (input == "EXIT")
             break;
-        else 
-            continue;
+        else
+            std::cout << "Command is not recognized!" << std::endl;      
     }
 
     return 0;
