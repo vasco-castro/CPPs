@@ -1,7 +1,7 @@
 
 # ------------------- Variables -------------------
 
-NAME		:= phoneBook
+NAME		:= phonebook
 
 # Directories
 SRCS_DIR	:= srcs/

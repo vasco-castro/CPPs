@@ -1,18 +1,22 @@
 
 # ------------------- Variables -------------------
 
-NAME		= megaphone
+NAME		:= megaphone
 
-CXX			?= c++
+CXX			:= c++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
 
-SRCS		:= $(NAME).cpp
+SRCS		:= $(addsuffix .cpp, $(NAME))
+OBJS		:= $(SRCS:.cpp=.o)
 
 # ------------------ Compilation ------------------
 
-$(NAME): $(SRCS)
+%.o: %.cpp
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
 	$(info Compiling exercise.)
-	@$(CXX) $(CXXFLAGS) $(SRCS) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 # --------------------- Rules ---------------------
 
@@ -28,8 +32,8 @@ fclean: clean
 
 re: fclean all
 
-.DEFAULT_GOAL := all
-.PHONY: all clean fclean re test
-
-test: $(NAME)
+run: $(NAME)
 	@./$(NAME) test " " 123wow!
+
+.DEFAULT_GOAL := all
+.PHONY: all clean fclean re run

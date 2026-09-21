@@ -90,7 +90,7 @@ void PhoneBook::search() {
 		throw std::runtime_error("Interrupted!");
 
 	if (numberHasChars(index) || index.empty() || index.length() > 2){
-		std::cout << "None valid index!" << std::endl;
+		std::cout << "Invalid index!" << std::endl;
 		return;
 	}
 
