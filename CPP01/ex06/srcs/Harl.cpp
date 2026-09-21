@@ -14,7 +14,7 @@ void Harl::warning(void) const {
 }
 
 void Harl::error(void) const {
-	std::cerr << MSG_ERROR << std::endl;
+	std::cout << MSG_ERROR << std::endl;
 }
 
 int Harl::getLevel(std::string level) const {

@@ -30,4 +30,4 @@ class Harl {
 		void complain(std::string level) const;
 };
 
-#endif
+#endif // HARL_HPP

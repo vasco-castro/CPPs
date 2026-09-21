@@ -14,4 +14,4 @@ class Weapon {
 		const std::string& getType() const;
 };
 
-#endif
+#endif // WEAPON_HPP

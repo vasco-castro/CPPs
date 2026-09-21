@@ -16,4 +16,4 @@ class HumanB {
 		void attack() const;
 };
 
-#endif 
+#endif // HUMANB_HPP

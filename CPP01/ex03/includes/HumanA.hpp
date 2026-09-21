@@ -15,4 +15,4 @@ class HumanA {
 		void attack() const;
 };
 
-#endif
+#endif // HUMANA_HPP
