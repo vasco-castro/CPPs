@@ -8,7 +8,7 @@ SRCS_DIR	:= srcs/
 OBJS_DIR	:= objs/
 INCS_DIR	:= includes/
 
-CXX			:= c++ -g
+CXX			:= c++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98 -I$(INCS_DIR)
 
 FILES		:= main Contact PhoneBook

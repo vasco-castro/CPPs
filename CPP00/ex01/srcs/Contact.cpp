@@ -5,7 +5,7 @@
 
 Contact::Contact(): empty(true) {}
 
-Contact::Contact( std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret):
+Contact::Contact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret):
 	empty(false), firstName(firstName), lastName(lastName), nickname(nickname), phoneNumber(phoneNumber), darkestSecret(darkestSecret) {}
 
 bool Contact::getEmpty() const {

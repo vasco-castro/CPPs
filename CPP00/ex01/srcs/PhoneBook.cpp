@@ -9,7 +9,7 @@
 
 PhoneBook::PhoneBook(): lastId(0) {}
 
-static bool strIsEmpty(std::string str) {
+static bool strIsEmpty(const std::string &str) {
 	std::string::const_iterator it;
 
 	for (it = str.begin(); it != str.end(); it++)
@@ -17,7 +17,7 @@ static bool strIsEmpty(std::string str) {
 	return true;
 }
 
-static std::string promptField(std::string fieldName) {
+static std::string promptField(const std::string &fieldName) {
 	std::string field("");
 	while (strIsEmpty(field)) {
 		std::cout << "Insert " << fieldName << " > ";
@@ -42,7 +42,7 @@ void PhoneBook::add() {
 		lastId = 0;
 }
 
-static std::string trimColumn(std::string column) {
+static std::string trimColumn(const std::string &column) {
 	if (column.length() > 10)
 		return column.substr(0, 9) + '.';
 	return column;
@@ -72,7 +72,7 @@ void PhoneBook::printTable() const {
 	}
 }
 
-static bool numberHasChars(std::string str) {
+static bool numberHasChars(const std::string &str) {
 	std::string::const_iterator it;
 
 	for (it = str.begin(); it != str.end(); it++)
@@ -87,7 +87,7 @@ void PhoneBook::search() {
 	std::cout << "Insert Contact Index > ";
 
 	if (!std::getline(std::cin, index))
-			throw std::runtime_error("Interrupted!");
+		throw std::runtime_error("Interrupted!");
 
 	if (numberHasChars(index) || index.empty() || index.length() > 2){
 		std::cout << "None valid index!" << std::endl;
