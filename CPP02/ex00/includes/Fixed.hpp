@@ -1,18 +1,21 @@
 
-// #include <>
+#ifndef FIXED_HPP
+# define CONTACT_HPP
 
 class Fixed {
-	
-	int rawBits;
-	static const int fractionalBits = 8;
+
+	int					rawBits;
+	static const int	fractionalBits = 8;
 
 	public:
 		Fixed();								// 0. Default Constructor
 		~Fixed();								// 1. Destructor
 		Fixed(const Fixed& other);				// 2. Copy constructor
-	    Fixed& operator=(const Fixed& other);	// 3. Copy assignment operator
+		Fixed& operator=(const Fixed& other);	// 3. Copy assignment operator
 
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
 
 };
+
+#endif // FIXED_HPP
