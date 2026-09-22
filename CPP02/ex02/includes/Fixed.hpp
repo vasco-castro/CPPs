@@ -1,11 +1,12 @@
 
 #ifndef FIXED_HPP
-# define CONTACT_HPP
+# define FIXED_HPP
 
 # include <iostream>
 
 class Fixed {
 
+	// |0000 0000|0000 0000|0000 0000|0000 0000|
 	int					rawBits;
 	static const int	fractionalBits = 8;
 
@@ -38,8 +39,8 @@ class Fixed {
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
 
-		float toFloat( void ) const;
 		int toInt( void ) const;
+		float toFloat( void ) const;
 		
 		static Fixed& min(Fixed& a, Fixed& b);
 		static const Fixed& min(const Fixed& a, const Fixed& b);

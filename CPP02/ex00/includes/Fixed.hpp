@@ -1,9 +1,10 @@
 
 #ifndef FIXED_HPP
-# define CONTACT_HPP
+# define FIXED_HPP
 
 class Fixed {
 
+	// |0000 0000|0000 0000|0000 0000|0000 0000|
 	int					rawBits;
 	static const int	fractionalBits = 8;
 

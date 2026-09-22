@@ -42,8 +42,8 @@ fclean: clean
 
 re: fclean all
 
-run: re
-	@valgrind --leak-check=full ./$(NAME)
+run: $(NAME)
+	@./$(NAME)
 
 .DEFAULT_GOAL := all
 .PHONY: all clean fclean re run

@@ -1,6 +1,8 @@
 
 #include "Fixed.hpp"
 #include <iostream>
+#include <cmath>
+#include <stdint.h>
 
 Fixed::Fixed(): rawBits(0) {}
 
@@ -11,7 +13,7 @@ Fixed::Fixed(const Fixed& other) {
 }
 
 Fixed::Fixed(const int value) {
-	rawBits = value << fractionalBits;
+	rawBits = value * (1 << fractionalBits);
 }
 
 Fixed::Fixed(const float value) {
@@ -19,8 +21,6 @@ Fixed::Fixed(const float value) {
 }
 
 Fixed& Fixed::operator=(const Fixed& other) {
-	std::cout << "Copy assignment operator called" << std::endl;
-
 	if (this != &other)
 		rawBits = other.rawBits;
 	return *this;
@@ -51,19 +51,31 @@ bool Fixed::operator!=(const Fixed& other) const {
 }
 
 Fixed Fixed::operator+(const Fixed& other) const {
-	return Fixed(toFloat() + other.toFloat());
+	// return Fixed(toFloat() + other.toFloat());
+	Fixed r;
+	r.rawBits = (rawBits + other.rawBits);
+	return r;
 }
 
 Fixed Fixed::operator-(const Fixed& other) const {
-	return Fixed(toFloat() - other.toFloat());
+	// return Fixed(toFloat() - other.toFloat());
+	Fixed r;
+	r.rawBits = (rawBits - other.rawBits);
+	return r;
 }
 
 Fixed Fixed::operator*(const Fixed& other) const {
-	return Fixed(toFloat() * other.toFloat());
+	// return Fixed(toFloat() * other.toFloat());
+	Fixed r;
+	r.rawBits = (static_cast<int64_t>(rawBits) * other.rawBits) >> fractionalBits;
+	return r;
 }
 
 Fixed Fixed::operator/(const Fixed& other) const {
-	return Fixed(toFloat() / other.toFloat());
+	// return Fixed(toFloat() / other.toFloat());
+	Fixed r;
+	r.rawBits = ((static_cast<int64_t>(rawBits) * (1 << fractionalBits)) / other.rawBits);
+	return r;
 }
 
 Fixed& Fixed::operator++() {
@@ -89,7 +101,6 @@ Fixed Fixed::operator--(int) {
 }
 
 int Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return rawBits;
 }
 
@@ -97,12 +108,12 @@ void Fixed::setRawBits(int const raw) {
 	rawBits = raw;
 }
 
-int Fixed::toInt( void ) const {
+int Fixed::toInt(void) const {
 	return rawBits >> fractionalBits;
 }
 
-float Fixed::toFloat( void ) const {
-	return (float)rawBits / (1 <<fractionalBits);
+float Fixed::toFloat(void) const {
+	return static_cast<float>(rawBits) / (1 << fractionalBits);
 }
 
 Fixed& Fixed::min(Fixed& a, Fixed& b) {
