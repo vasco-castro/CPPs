@@ -10,30 +10,63 @@ ClapTrap::ClapTrap(std::string name): name(name), hitPoints(10), energyPoints(10
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other) {
-	// TODO: Copy Constructor
+	std::cout << "Copy constructor called" << std::endl;
+	name = other.name;
+	hitPoints = other.hitPoints;
+	energyPoints = other.energyPoints;
+	attackDamage = other.attackDamage;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
-	// TODO: Copy Assignment Overloader
-	name = other.name;
-
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &other) {
+		name = other.name;
+		hitPoints = other.hitPoints;
+		energyPoints = other.energyPoints;
+		attackDamage = other.attackDamage;
+	}
+	return *this;
 }
 
 ClapTrap::~ClapTrap() {
 	std::cout << "Destructor called" << std::endl;
 }
 
-void ClapTrap::setName(const std::string& name) {}
-void ClapTrap::setHitPoints(const std::string hitPoints) {}
-void ClapTrap::setEnergyPoints(const std::string energyPoints) {}
-void ClapTrap::setAttackDamage(const std::string attackDamage) {}
-const std::string& ClapTrap::getType() const {}
-const int ClapTrap::getHitPoints() const {}
-const int ClapTrap::getEnergyPoints() const {}
-const int ClapTrap::getAttackDamage() const {}
+void ClapTrap::setName(const std::string& name) {
+	this.name = name;
+}
+
+void ClapTrap::setHitPoints(const std::string hitPoints) {
+	this.hitPoints = hitPoints;
+}
+
+void ClapTrap::setEnergyPoints(const std::string energyPoints) {
+	this.energyPoints = energyPoints;
+}
+
+void ClapTrap::setAttackDamage(const std::string attackDamage) {
+	this.attackDamage = attackDamage;
+}
+
+const std::string& ClapTrap::getName() const {
+	return &name;
+}
+
+const int ClapTrap::getHitPoints() const {
+	return &hitPoints;
+}
+
+const int ClapTrap::getEnergyPoints() const {
+	return &energyPoints;
+}
+
+const int ClapTrap::getAttackDamage() const {
+	return &attackDamage;
+}
 
 void ClapTrap::attack(const std::string& target) {
-	// TODO: Validate energyPoints first
+	if (energyPoints <= 0)
+		return;
 	energyPoints--;
 	std::cout << "ClapTrap " << name << " attacks "
 		<< target << ", causing " << attackDamage
@@ -41,14 +74,16 @@ void ClapTrap::attack(const std::string& target) {
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
-	// TODO: Validate hitPoints first
+	if (hitPoints <= 0)
+		return;
 	hitPoints -= amount;
 	std::cout << "ClapTrap " << name << " tooke "
 		<< amount << " amount of damage."<< std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	// TODO: Validate energyPoints and hitPoints first
+	if (energyPoints <= 0)
+		return;
 	energyPoints--;
 	hitPoints += amount;
 	std::cout << "ClapTrap " << name << " repaired "
