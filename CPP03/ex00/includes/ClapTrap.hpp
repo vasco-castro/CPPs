@@ -7,9 +7,9 @@
 class ClapTrap {
 
 	std::string name;
-	int hitPoints;
-	int energyPoints;
-	int attackDamage;
+	unsigned int hitPoints;
+	unsigned int energyPoints;
+	unsigned int attackDamage;
 
 	public:
 		ClapTrap();
@@ -19,17 +19,21 @@ class ClapTrap {
 		~ClapTrap();
 
 		void setName(const std::string& name);
-		void setHitPoints(const std::string hitPoints);
-		void setEnergyPoints(const std::string energyPoints);
-		void setAttackDamage(const std::string attackDamage);
+		void setHitPoints(int hitPoints);
+		void setEnergyPoints(int energyPoints);
+		void setAttackDamage(int attackDamage);
+
 		const std::string& getName() const;
-		const int getHitPoints() const;
-		const int getEnergyPoints() const;
-		const int getAttackDamage() const;
+		int getHitPoints() const;
+		int getEnergyPoints() const;
+		int getAttackDamage() const;
 		
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
+
+		bool isDead() const;
+		bool isOutOfEnergy() const;
 };
 
 #endif // CLAPTRAP_HPP
