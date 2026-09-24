@@ -14,15 +14,15 @@ class ClapTrap {
 
 	public:
 		ClapTrap();
-		ClapTrap(std::string name);
+		ClapTrap(std::string newName);
 		ClapTrap(const ClapTrap& other);
-    	ClapTrap& operator=(const ClapTrap& other);
+		ClapTrap& operator=(const ClapTrap& other);
 		~ClapTrap();
 
-		void setName(const std::string& name);
-		void setHitPoints(unsigned int hitPoints);
-		void setEnergyPoints(unsigned int energyPoints);
-		void setAttackDamage(unsigned int attackDamage);
+		void setName(const std::string& newName);
+		void setHitPoints(unsigned int newHitPoints);
+		void setEnergyPoints(unsigned int newEnergyPoints);
+		void setAttackDamage(unsigned int newAttackDamage);
 
 		const std::string& getName() const;
 		unsigned int getHitPoints() const;

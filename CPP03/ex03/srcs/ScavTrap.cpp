@@ -4,16 +4,16 @@
 
 ScavTrap::ScavTrap(): ClapTrap() {
 	std::cout << "ScavTrap Default Constructor called" << std::endl;
-	this->hitPoints = 100;
-	this->energyPoints = 50;
-	this->attackDamage = 20;
+	setHitPoints(100);
+	setEnergyPoints(50);
+	setAttackDamage(20);
 }
 
-ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
+ScavTrap::ScavTrap(std::string newName): ClapTrap(newName) {
 	std::cout << "ScavTrap " << name << " Constructor called" << std::endl;
-	this->hitPoints = 100;
-	this->energyPoints = 50;
-	this->attackDamage = 20;
+	setHitPoints(100);
+	setEnergyPoints(50);
+	setAttackDamage(20);
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other): ClapTrap(other) {
@@ -21,8 +21,8 @@ ScavTrap::ScavTrap(const ScavTrap& other): ClapTrap(other) {
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
-	std::cout << "ScavTrap " << name << " Copy Assignment Operator called" << std::endl;
 	ClapTrap::operator=(other);
+	std::cout << "ScavTrap " << name << " Copy Assignment Operator called" << std::endl;
 	return *this;
 }
 
@@ -37,7 +37,7 @@ void ScavTrap::attack(const std::string& target) {
 	std::cout << name << " fires at " << target
 		<< ", dealing " << attackDamage << " points of damage!" << std::endl;
 
-	energyPoints--;
+	setEnergyPoints(energyPoints - 1);
 }
 
 void ScavTrap::guardGate() const {
