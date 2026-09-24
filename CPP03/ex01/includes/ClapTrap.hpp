@@ -3,14 +3,14 @@
 # define CLAPTRAP_HPP
 
 #include <string>
-#include <iostream>
 
 class ClapTrap {
 
-	std::string name;
-	unsigned int hitPoints;
-	unsigned int energyPoints;
-	unsigned int attackDamage;
+	protected:
+		std::string name;
+		unsigned int hitPoints;
+		unsigned int energyPoints;
+		unsigned int attackDamage;
 
 	public:
 		ClapTrap();
