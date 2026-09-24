@@ -1,5 +1,7 @@
 
+#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include <iostream>
 
 static void	printStats(const ClapTrap& trap) {
@@ -13,30 +15,37 @@ int main(void)
 	std::cout << "--- Construction ---" << std::endl;
 	ClapTrap c("Bob");
 	ScavTrap s("Bob 2");
+	FragTrap f("Bob 3");
 	std::cout << std::endl;
 
 	std::cout << "--- Starting stats ---" << std::endl;
 	printStats(c);
 	printStats(s);
+	printStats(f);
 	std::cout << std::endl;
 
 	std::cout << "--- Same call, different trap ---" << std::endl;
 	c.attack("Other Trap");
 	s.attack("Other Trap");
-	s.guardGate();
+	f.attack("Other Trap");
 	std::cout << std::endl;
 
-	std::cout << "--- Inherited ClapTrap behaviour on a ScavTrap ---" << std::endl;
-	s.takeDamage(5);
-	s.beRepaired(7);
-	printStats(s);
+	std::cout << "--- What each one can do on its own ---" << std::endl;
+	s.guardGate();
+	f.highFivesGuys();
+	std::cout << std::endl;
+
+	std::cout << "--- Inherited ClapTrap behaviour on a FragTrap ---" << std::endl;
+	f.takeDamage(5);
+	f.beRepaired(7);
+	printStats(f);
 	std::cout << std::endl;
 
 	std::cout << "--- Orthodox Canonical Form ---" << std::endl;
 	{
-		ScavTrap copy(s);
-		ScavTrap assigned;
-		assigned = s;
+		FragTrap copy(f);
+		FragTrap assigned;
+		assigned = f;
 		printStats(copy);
 		printStats(assigned);
 	}
