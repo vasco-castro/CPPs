@@ -13,7 +13,7 @@ int main()
 		const AAnimal* i = new Cat();
 		
 		
-		// AAnimal a(); // This will not compile because AAnimal is an Abstract Class
+		AAnimal a; // This will not compile because AAnimal is an Abstract Class
 		// const AAnimal* a = new AAnimal(); // error: cannot instantiate abstract class
 
 		delete j;//should not create a leak
