@@ -12,23 +12,14 @@ WrongCat::WrongCat(const WrongCat& other): WrongAnimal(other) {
 }
 
 WrongCat& WrongCat::operator=(const WrongCat& other) {
-	std::cout << "WrongCat Assignment operator called." << std::endl;
 	if (this != &other) {
-		setType(other.type);
+		WrongAnimal::operator=(other);
 	}
 	return *this;
 }
 
 WrongCat::~WrongCat() {
 	std::cout << "WrongCat Destructor called." << std::endl;
-}
-
-const std::string WrongCat::getType() const {
-	return type;
-}
-
-void WrongCat::setType(const std::string& newType) {
-	type = newType;
 }
 
 void WrongCat::makeSound() const {

@@ -12,7 +12,6 @@ WrongAnimal::WrongAnimal(const WrongAnimal& other) {
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other) {
-	std::cout << "WrongAnimal Assignment operator called." << std::endl;
 	if (this != &other) {
 		setType(other.type);
 	}
@@ -23,7 +22,7 @@ WrongAnimal::~WrongAnimal() {
 	std::cout << "WrongAnimal Destructor called." << std::endl;
 }
 
-const std::string WrongAnimal::getType() const {
+const std::string& WrongAnimal::getType() const {
 	return type;
 }
 

@@ -4,8 +4,11 @@
 
 # include <string>
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Cat: public Animal {
+
+	Brain* brain;
 
 	public:
 		Cat();
@@ -14,6 +17,9 @@ class Cat: public Animal {
 		~Cat();
 
 		void makeSound() const;
+
+		Brain& getBrain();
+		const Brain& getBrain() const;
 };
 
 #endif // CAT_HPP
