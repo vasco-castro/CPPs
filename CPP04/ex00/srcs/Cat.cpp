@@ -7,9 +7,8 @@ Cat::Cat(): Animal() {
 	setType("Cat");
 }
 
-Cat::Cat(const Cat& other) {
+Cat::Cat(const Cat& other): Animal(other) {
 	std::cout << "Cat Copy Constructor called." << std::endl;
-	*this = other;
 }
 
 Cat& Cat::operator=(const Cat& other) {
