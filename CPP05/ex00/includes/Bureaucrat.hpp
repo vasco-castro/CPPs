@@ -2,31 +2,29 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include <exception>
-#include <string>
-#include <iostream>
+# include <exception>
+# include <string>
+# include <iostream>
 
 class Bureaucrat {
-private:
-	const std::string name;
-	unsigned int grade;
-
-    // TODO: Nested Class Exceptions
+public:
     class GradeTooHighException : public std::exception {
     public:
         const char* what() const throw();
     };
-
+	
     class GradeTooLowException : public std::exception {
     public:
     	const char* what() const throw();
-    };
-
+    };  
+private:
+	const std::string	name;
+	unsigned int		grade;
 public:
 	Bureaucrat();
-	Bureaucrat(const std::string newName, unsigned int newGrade) throw(GradeTooLowException, GradeTooHighException);
-	Bureaucrat(const Bureaucrat& other) throw(GradeTooLowException, GradeTooHighException);
-	Bureaucrat& operator=(const Bureaucrat& other) throw(GradeTooLowException, GradeTooHighException);
+	Bureaucrat(const std::string& newName, unsigned int newGrade) throw(GradeTooLowException, GradeTooHighException);
+	Bureaucrat(const Bureaucrat& other);
+	Bureaucrat& operator=(const Bureaucrat& other);
 	~Bureaucrat();
 
 	void operator++(int) throw(GradeTooHighException);

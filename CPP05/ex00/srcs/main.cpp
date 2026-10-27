@@ -2,7 +2,6 @@
 #include "Bureaucrat.hpp"
 #include <exception>
 #include <iostream>
-#include <stdexcept>
 
 int main(void)
 {
