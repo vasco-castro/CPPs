@@ -17,5 +17,5 @@ public:
     const std::string &getTarget() const;
 	void setTarget(const std::string &target);
 
-    void execute(Bureaucrat const& executor) const;
+    void execute(Bureaucrat const& executor) const throw(GradeTooLowException, FormNotSignedException);
 };

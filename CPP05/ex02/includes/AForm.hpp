@@ -38,7 +38,7 @@ public:
 	unsigned int getSignGrade() const;
     unsigned int getExecGrade() const;
 
-    void beSigned(const Bureaucrat &b);
+    void beSigned(const Bureaucrat &b) throw(GradeTooLowException);
     virtual void execute(Bureaucrat const & executor) const = 0;
 };
 

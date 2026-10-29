@@ -39,7 +39,7 @@ unsigned int AForm::getSignGrade() const {
 
 unsigned int AForm::getExecGrade() const { return execGrade; }
 
-void AForm::beSigned(const Bureaucrat& b) {
+void AForm::beSigned(const Bureaucrat& b) throw(GradeTooLowException) {
 	if (b.getGrade() > signGrade)
 		throw GradeTooLowException();
     signedStatus = true;
