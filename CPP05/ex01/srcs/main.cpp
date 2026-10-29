@@ -6,15 +6,15 @@
 int main(void)
 {
     Bureaucrat b1("Bob 1", 42);
-    std::cout << b1 << std::endl;
+    std::cout << b1;
 
     Form f("O papel", 42, 42);
-    std::cout << f << std::endl;
+    std::cout << f;
 
     b1.signForm(f);
 
     Bureaucrat b2("Bob 2", 150);
-    std::cout << b2 << std::endl;
+    std::cout << std::endl << b2;
 
     b2.signForm(f);
 

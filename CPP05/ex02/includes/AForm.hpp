@@ -1,10 +1,9 @@
 
-#ifndef AFORM_HPP
-# define AFORM_HPP
+#pragma once
 
-# include <exception>
-# include <string>
-# include <iostream>
+#include <exception>
+#include <string>
+#include <iostream>
 
 class Bureaucrat;
 
@@ -14,11 +13,14 @@ public:
     public:
         const char* what() const throw();
     };
-		
     class GradeTooLowException : public std::exception {
     public:
     	const char* what() const throw();
-    };  
+    };
+    class FormNotSignedException : public std::exception {
+    public:
+        const char* what() const throw();
+    };
 private:
 	const std::string	name;
   	bool				signedStatus;
@@ -29,16 +31,15 @@ public:
 	AForm(const std::string& newName, unsigned int signGrade, unsigned int execGrade) throw(GradeTooLowException, GradeTooHighException);
 	AForm(const AForm& other);
 	AForm& operator=(const AForm& other);
-	~AForm();
+	virtual ~AForm();
 
     const std::string &getName() const;
     bool getSignedStatus() const;
 	unsigned int getSignGrade() const;
     unsigned int getExecGrade() const;
 
-    void beSigned(const Bureaucrat& b);
+    void beSigned(const Bureaucrat &b);
+    virtual void execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream& operator<<(std::ostream& os, const AForm& fixed);
-
-#endif // AFORM_HPP

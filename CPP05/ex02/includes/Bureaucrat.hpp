@@ -1,10 +1,9 @@
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#pragma once
 
-# include <exception>
-# include <string>
-# include <iostream>
+#include <exception>
+#include <string>
+#include <iostream>
 
 class AForm;
 
@@ -37,9 +36,8 @@ public:
 	const std::string& getName() const;
     unsigned int getGrade() const;
 
-    void signForm(AForm& form);
+    void signForm(AForm &form);
+    void executeForm(AForm const & form) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& fixed);
-
-#endif // BUREAUCRAT_HPP
