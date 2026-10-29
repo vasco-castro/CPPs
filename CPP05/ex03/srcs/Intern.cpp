@@ -6,6 +6,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include <cstddef>
 #include <string>
+#include <iostream>
 
 Intern::Intern() {}
 
@@ -27,6 +28,8 @@ AForm *Intern::makeForm(std::string formName, std::string formTarget) {
     while (i < 3 && formName.compare(forms[i]) != 0) {
     	i++;
     }
+
+    if (i < 3) std::cout << "Intern creates " << formName << std::endl;
 
 	switch (i) {
 		case 0: return new ShrubberyCreationForm(formTarget);

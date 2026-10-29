@@ -1,21 +1,22 @@
 
-#pragma once
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
 #include <string>
+#include <stdexcept>
 
 class ShrubberyCreationForm: public AForm {
 private:
 	std::string target;
 public:
 	ShrubberyCreationForm();
-	ShrubberyCreationForm(std::string target) throw(GradeTooLowException, GradeTooHighException);
+	ShrubberyCreationForm(std::string target);
 	ShrubberyCreationForm(const ShrubberyCreationForm& other);
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 	~ShrubberyCreationForm();
 
-    const std::string &getTarget() const;
-	void setTarget(const std::string &target);
-
-    void execute(Bureaucrat const& executor) const throw(GradeTooLowException, FormNotSignedException);
+    void execute(Bureaucrat const& executor) const throw(GradeTooLowException, FormNotSignedException, std::runtime_error);
 };
+
+#endif // SHRUBBERYCREATIONFORM_HPP

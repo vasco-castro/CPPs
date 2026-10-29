@@ -5,30 +5,28 @@
 
 Bureaucrat::Bureaucrat(): name("<undefined>"), grade(150) {}
 
-Bureaucrat::Bureaucrat(const std::string& newName, unsigned int newGrade) throw(GradeTooLowException, GradeTooHighException)
+Bureaucrat::Bureaucrat(const std::string& newName, int newGrade)
     : name(newName) {
     setGrade(newGrade);
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other) {
+Bureaucrat::Bureaucrat(const Bureaucrat& other): name(other.name), grade(other.grade) {
 	*this = other;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
-	if (this != &other) {
+	if (this != &other)
 		setGrade(other.grade);
-	}
 	return *this;
 }
 
 Bureaucrat::~Bureaucrat() {}
 
-void Bureaucrat::setGrade(unsigned int newGrade) throw(GradeTooLowException, GradeTooHighException) {
-	if (newGrade < 1) {
+void Bureaucrat::setGrade(int newGrade) throw(GradeTooLowException, GradeTooHighException) {
+	if (newGrade < 1)
 		throw(GradeTooHighException());
-	} else if (newGrade > 150) {
+	if (newGrade > 150)
 		throw(GradeTooLowException());
-	}
 	grade = newGrade;
 }
 
@@ -48,14 +46,14 @@ const std::string& Bureaucrat::getName() const {
 	return name;
 }
 
-unsigned int Bureaucrat::getGrade() const { return grade; }
+int Bureaucrat::getGrade() const { return grade; }
 
 void Bureaucrat::signForm(Form& form) {
 	try {
         form.beSigned(*this);
         std::cout << this->getName() << " signed " << form.getName() << std::endl;
 	} catch (std::exception& e) {
-		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+		std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
     }
 }
 

@@ -7,7 +7,7 @@
 RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45), target("<undefined target>") {}
 
 RobotomyRequestForm::RobotomyRequestForm(std::string newTarget)
-    throw(GradeTooLowException, GradeTooHighException): AForm("RobotomyRequestForm", 72, 45), target(newTarget) {}
+    : AForm("RobotomyRequestForm", 72, 45), target(newTarget) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other): AForm(other), target(other.target) {}
 

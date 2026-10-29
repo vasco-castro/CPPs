@@ -1,5 +1,6 @@
 
-#pragma once
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
 #include <string>
 
@@ -15,3 +16,4 @@ public:
 	AForm* makeForm(std::string formName, std::string formTarget);
 };
 
+#endif // INTERN_HPP

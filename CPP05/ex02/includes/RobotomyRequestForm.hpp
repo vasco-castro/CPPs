@@ -1,6 +1,7 @@
 
 
-#pragma once
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
 #include <string>
@@ -10,13 +11,12 @@ private:
 	std::string target;
 public:
 	RobotomyRequestForm();
-	RobotomyRequestForm(std::string target) throw(GradeTooLowException, GradeTooHighException);
+	RobotomyRequestForm(std::string target);
 	RobotomyRequestForm(const RobotomyRequestForm& other);
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 	~RobotomyRequestForm();
 
-    const std::string &getTarget() const;
-	void setTarget(const std::string &target);
-
     void execute(Bureaucrat const& executor) const throw(GradeTooLowException, FormNotSignedException);
 };
+
+#endif // ROBOTOMYREQUESTFORM_HPP

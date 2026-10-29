@@ -8,7 +8,7 @@
 ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137), target("<undefined target>") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string newTarget)
-    throw(GradeTooLowException, GradeTooHighException): AForm("ShrubberyCreationForm", 145, 137), target(newTarget) {}
+    : AForm("ShrubberyCreationForm", 145, 137), target(newTarget) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other): AForm(other), target(other.target) {}
 
@@ -20,7 +20,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-void ShrubberyCreationForm::execute(Bureaucrat const &b) const throw(GradeTooLowException, FormNotSignedException) {
+void ShrubberyCreationForm::execute(Bureaucrat const &b) const throw(GradeTooLowException, FormNotSignedException, std::runtime_error) {
 	if (b.getGrade() > getExecGrade())
 		throw GradeTooLowException();
 	if (!getSignedStatus())

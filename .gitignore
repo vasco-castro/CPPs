@@ -43,6 +43,7 @@
 # Project executables
 megaphone
 phoneBook
+
 zombie
 zombieHorde
 stringReferences
@@ -50,14 +51,23 @@ unnecessaryViolence
 sed
 harl
 harlFilter
+
 fixed
+
 claptrap
 scavtrap
 fragtrap
 diamondtrap
+
 animals
 moreanimals
 aanimal
+
+bureaucrat
+signform
+execform
+intern
+*_shrubbery
 
 # IDEs garbage
 .idea

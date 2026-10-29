@@ -6,7 +6,7 @@
 PresidentialPardonForm::PresidentialPardonForm(): AForm("PresidentialPardonForm", 25, 5), target("<undefined target>") {}
 
 PresidentialPardonForm::PresidentialPardonForm(std::string newTarget)
-    throw(GradeTooLowException, GradeTooHighException): AForm("PresidentialPardonForm", 25, 5), target(newTarget) {}
+    : AForm("PresidentialPardonForm", 25, 5), target(newTarget) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other): AForm(other), target(other.target) {}
 

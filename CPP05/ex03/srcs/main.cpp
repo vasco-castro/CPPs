@@ -3,9 +3,13 @@
 #include "Bureaucrat.hpp"
 #include "Intern.hpp"
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 int main(void)
 {
+	srand(time(NULL));
+
 	Bureaucrat b1("Bob 1", 42);
     std::cout << b1;
 
@@ -49,6 +53,20 @@ int main(void)
 	    b1.signForm(*none);
         b1.executeForm(*none);
         delete none;
+	}
+
+	Bureaucrat boss("Boss", 1);
+	std::cout << std::endl << boss;
+
+	AForm* pardon;
+	pardon = someRandomIntern.makeForm("presidential pardon", "Bob 6");
+	if (pardon) {
+		std::cout << *pardon;
+
+	    boss.executeForm(*pardon);
+	    boss.signForm(*pardon);
+	    boss.executeForm(*pardon);
+	    delete pardon;
 	}
 
 	return 0;
