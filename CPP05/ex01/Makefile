@@ -1,7 +1,7 @@
 
 # ------------------- Variables -------------------
 
-NAME		:= forms
+NAME		:= signform
 
 # Directories
 SRCS_DIR	:= srcs/
