@@ -28,6 +28,8 @@ AForm *Intern::makeForm(std::string formName, std::string formTarget) {
     	i++;
     }
 
+    if (i < 3) std::cout << "Intern creates " << formName << std::endl;
+
 	switch (i) {
 		case 0: return new ShrubberyCreationForm(formTarget);
 		case 1: return new RobotomyRequestForm(formTarget);

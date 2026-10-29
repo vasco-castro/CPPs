@@ -4,7 +4,7 @@
 
 Form::Form(): name("<undefined>"), signedStatus(false), signGrade(150), execGrade(150) {}
 
-Form::Form(const std::string& newName, unsigned int newSignGrade, unsigned int newExecGrade) throw(GradeTooLowException, GradeTooHighException)
+Form::Form(const std::string& newName, int newSignGrade, int newExecGrade)
     : name(newName), signedStatus(false), signGrade(newSignGrade), execGrade(newExecGrade) {
     if (execGrade > 150 || signGrade > 150)
         throw GradeTooLowException();
@@ -33,11 +33,11 @@ bool Form::getSignedStatus() const {
 	return signedStatus;
 }
 
-unsigned int Form::getSignGrade() const {
+int Form::getSignGrade() const {
 	return signGrade;
 }
 
-unsigned int Form::getExecGrade() const { return execGrade; }
+int Form::getExecGrade() const { return execGrade; }
 
 void Form::beSigned(const Bureaucrat& b) {
 	if (b.getGrade() <= signGrade)

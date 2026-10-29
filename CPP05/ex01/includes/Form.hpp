@@ -22,19 +22,19 @@ public:
 private:
 	const std::string	name;
   	bool				signedStatus;
-	const unsigned int	signGrade;
-	const unsigned int	execGrade;
+	const int	signGrade;
+	const int	execGrade;
 public:
 	Form();
-	Form(const std::string& newName, unsigned int signGrade, unsigned int execGrade) throw(GradeTooLowException, GradeTooHighException);
+	Form(const std::string& newName, int signGrade, int execGrade);
 	Form(const Form& other);
 	Form& operator=(const Form& other);
 	~Form();
 
     const std::string &getName() const;
     bool getSignedStatus() const;
-	unsigned int getSignGrade() const;
-    unsigned int getExecGrade() const;
+	int getSignGrade() const;
+    int getExecGrade() const;
 
     void beSigned(const Bureaucrat& b);
 };

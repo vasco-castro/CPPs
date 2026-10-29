@@ -35,5 +35,29 @@ int main(void)
 	}
 	std::cout << c << std::endl;
 
+	std::cout << "--- invalid constructor grades ---" << std::endl;
+	try {
+		Bureaucrat tooHigh("Too High", 0);
+		std::cout << tooHigh;
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat tooLow("Too Low", 151);
+		std::cout << tooLow;
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat negative("Negative", -1);
+		std::cout << negative;
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << std::endl << "--- copy ---" << std::endl;
+	Bureaucrat copy(c);
+	std::cout << copy;
+
 	return 0;
 }

@@ -18,5 +18,25 @@ int main(void)
 
     b2.signForm(f);
 
+    std::cout << std::endl << "--- invalid constructor grades ---" << std::endl;
+    try {
+        Form tooHigh("Too High", 0, 42);
+        std::cout << tooHigh;
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
+    try {
+        Form tooLow("Too Low", 42, 151);
+        std::cout << tooLow;
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
+    try {
+        Bureaucrat b3("Bob 3", 151);
+        std::cout << b3;
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
+
 	return 0;
 }
